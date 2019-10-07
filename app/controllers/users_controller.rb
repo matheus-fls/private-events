@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @user = User.new(params_user)
     if @user.valid?
       @user.save 
-      redirect_to show_url
+      redirect_to @user
     else
       flash[:info] = 'Invalid username/email'
       render 'new'
@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(current_user)
   end
 
   private 

@@ -1,0 +1,11 @@
+
+<% if logged? %>
+  <div>
+    <%= link_to 'Log out', logout_path %>
+  </div>
+  <div>
+    <%= @user.name%>, <%= @user.email%>
+  </div>
+<% end %>
+
+

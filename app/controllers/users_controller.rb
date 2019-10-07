@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @user = User.new(params_user)
     if @user.valid?
       @user.save 
+      log_in @user.id
       redirect_to @user
     else
       flash[:info] = 'Invalid username/email'

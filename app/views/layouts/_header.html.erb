@@ -1,0 +1,10 @@
+<% if logged? %>
+  <div class="d-flex justify-content-between">
+    <div>
+      Logged in as: <%= @user.name%>, <%= @user.email%>
+    </div>
+    <div>
+      <%= link_to 'Log out', logout_path, method: :delete %>
+    </div>
+  </div>
+<% end %>

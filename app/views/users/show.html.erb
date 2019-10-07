@@ -1,11 +1,6 @@
 <% if logged? %>
-  <div>
-    Logged in as: <%= @user.name%>, <%= @user.email%>
-  </div>
-  <div>
-    <%= link_to 'Log out', logout_path, method: :delete %>
-  </div>
   <div class="container">
+
     <h4>Your Events</h4>
     
       <% @events.each do |t| %>
@@ -14,6 +9,7 @@
           <li><%= t.date.strftime("%m/%d/%Y") %></li>
         </ul>
     <% end %>
-    </ul>    
+    </ul>   
+    <%= link_to 'New Event', events_path %> 
   </div>
 <% end %>

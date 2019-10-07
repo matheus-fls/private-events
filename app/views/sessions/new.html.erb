@@ -1,6 +1,6 @@
 <div>
   <% if logged? %>
-    <%= link_to 'Log out', logout_path %>
+    <%= link_to 'Log out', logout_path, method: :delete %>
   <% end %>
 </div>
 

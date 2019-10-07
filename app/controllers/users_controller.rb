@@ -15,7 +15,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(current_user)
+    if params[:id].to_i == current_user
+      @user = User.find(params[:id])
+    else
+      redirect_to '/'
+    end
   end
 
   private 

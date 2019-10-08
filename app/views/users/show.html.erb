@@ -1,12 +1,18 @@
 <% if logged? %>
   <div class="container">
     <h4>Your Events</h4>
-    
     <% @events.each do |t| %>
       <ul><%= t.name %>
         <li><%= t.description %></li>
         <li><%= t.date.strftime("%m/%d/%Y") %></li>
       </ul>
     <% end %>  
+
+    <h4>Upcoming Events</h4>
+    <ul>
+    <% @eves.each do |evs| %>
+      <li><%= evs.event.name %></li>
+    <% end %>
+  </ul>
   </div>
 <% end %>

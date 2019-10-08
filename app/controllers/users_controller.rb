@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     if params[:id].to_i == current_user.id
       @user = User.find(params[:id])
       @events = Event.where('user_id = ?', @user.id)
+      @eves = Attendance.where('user_id = ?', @user.id)
     else
       redirect_to '/'
     end

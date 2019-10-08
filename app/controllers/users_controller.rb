@@ -16,14 +16,32 @@ class UsersController < ApplicationController
 
   def show
     if params[:id].to_i == current_user.id
-      @user = User.find(params[:id])
+      @user = current_user
       @events = Event.where('user_id = ?', @user.id)
       @eves = Attendance.where('user_id = ?', @user.id)
+      @upcoming_events = upcoming_events @eves
+      @prev_events = prev_events @eves
+
     else
       redirect_to '/'
     end
   end
 
+  def upcoming_events(eves)
+    arr = []
+    eves.each do |eve|
+      arr << eve.event if eve.event.date > Time.now
+    end
+    arr
+  end
+
+  def prev_events(eves)
+    arr = []
+    eves.each do |eve|
+      arr << eve.event if eve.event.date < Time.now
+    end
+    arr
+  end
   private 
 
     def params_user

@@ -8,10 +8,17 @@
       </ul>
     <% end %>  
 
-    <h4>Upcoming Events</h4>
-    <ul>
-    <% @eves.each do |evs| %>
-      <li><%= evs.event.name %></li>
+  <h4>Upcoming Events</h4>
+  <ul>
+    <% @upcoming_events.each do |event| %>
+      <li><%= event.name %>, <%= event.date %></li>
+    <% end %>
+  </ul>
+
+  <h4>Previous Events</h4>
+  <ul>
+    <% @prev_events.each do |event| %>
+      <li><%= event.name %>, <%= event.date %></li>
     <% end %>
   </ul>
   </div>

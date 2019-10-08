@@ -1,2 +1,16 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.main-menu{
+  display: flex; 
+  justify-content: space-between;
+  background-color: aliceblue;
+  font-size: 2.2rem;
+  .nav{
+    display: flex;
+    .nav-text{
+      margin-top: 10px; 
+      margin-right: 11px;
+    }
+  }
+}

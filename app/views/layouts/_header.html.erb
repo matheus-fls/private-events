@@ -1,11 +1,32 @@
-
-<% if logged? %>
-  <div class="d-flex justify-content-between">
-    <div>
-      Logged in as: <%= current_user.name %>, <%= current_user.email %>
-    </div>
-    <div>
-      <%= link_to 'Log out', logout_path, method: :delete %>
-    </div>
-  </div>
-<% end %>
+<nav style="display: flex; justify-content: space-between;">
+  <ul class="nav justify-content-end" style="display: flex;">
+    <li class="nav-item">
+      <%= link_to 'Home', root_path %>
+    </li>
+    <% if logged? %>
+    <li class="nav-item">
+      <%= link_to 'My Events', current_user %>
+    </li>
+    <li class="nav-item">
+      <%= link_to 'New Event', events_path %>
+    </li>
+    <% end %>
+  </ul>
+  <ul class="nav" style="display: flex;">
+    <% if logged? %>
+      <li style="margin-top: 10px; margin-right: 11px;">
+        Logged in as: <%= current_user.name %>
+      </li>
+      <li>
+        <%= link_to 'Log out', logout_path, method: :delete %>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to 'Sign Up', signup_path %>
+      </li>
+      <li>
+        <%= link_to 'Log in', login_path %>
+      </li>
+    <% end %>
+  </ul>
+</nav>

@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   post   '/events', to: 'events#create'
   root   'events#index'
 
+  post   '/attendance', to: 'attendance#create'
+
+  resources :attendance, only: [:new, :create]
   resources :events,   only: [:new, :create, :show, :index]
   resources :sessions, only: [:new, :create, :destroy]
   resources :users,    only: [:new, :create, :show]

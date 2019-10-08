@@ -21,7 +21,6 @@ class UsersController < ApplicationController
       @eves = Attendance.where('user_id = ?', @user.id)
       @upcoming_events = upcoming_events @eves
       @prev_events = prev_events @eves
-
     else
       redirect_to '/'
     end

@@ -3,8 +3,7 @@ class EventsController < ApplicationController
   end
 
   def create 
-    @event = Event.new(params_event)
-    @event.creator = current_user
+    @event = current_user.events.build(params_event)
     if @event.valid?
       @event.save
       redirect_to @event

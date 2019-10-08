@@ -1,14 +1,8 @@
-<% if logged? %>
-  <div class="container">
-
-    <h4>Events</h4>
-    
-      <% @events.each do |event| %>
-        <ul><%= link_to event.name, event %>
-          <li><%= event.date.strftime("%m/%d/%Y") %></li>
-        </ul>
-    <% end %>
-    </ul>   
-    <%= link_to 'New Event', events_path %> 
-  </div>
-<% end %>
+<div class="container">
+  <h4>Events</h4>
+  <% @events.each do |event| %>
+    <ul><%= link_to event.name, event %>
+      <li><%= event.date.strftime("%m/%d/%Y") %></li>
+    </ul>
+  <% end %> 
+</div>

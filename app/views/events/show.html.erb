@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row container">
   <h2>
     <%= @event.name %>
   </h2>
@@ -9,4 +9,12 @@
   <%= @event.description %>
   <%= @event.date %>
   <%= @event.creator.name %>
+</div>
+<div> 
+  <h3>Attendees</h3>
+  <ul>
+    <% @att.each do |att| %>
+      <li><%= att.user.name %></li>
+    <% end %>
+  </ul>
 </div>

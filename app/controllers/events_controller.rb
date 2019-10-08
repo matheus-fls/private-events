@@ -6,6 +6,8 @@ class EventsController < ApplicationController
     @event = current_user.events.build(params_event)
     if @event.valid?
       @event.save
+      @attendance = Attendance.new(user: current_user, event: @event)
+      @attendance.save if @attendance.valid?
       redirect_to @event
     else
       render 'new'
@@ -14,6 +16,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @att = Attendance.where('event_id = ?', @event.id)
   end
 
   def index 

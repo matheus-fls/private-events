@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   get    '/events', to: 'events#new'
   post   '/events', to: 'events#create'
+  root   'events#index'
 
   resources :events,   only: [:new, :create, :show, :index]
   resources :sessions, only: [:new, :create, :destroy]

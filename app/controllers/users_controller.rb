@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    if params[:id].to_i == current_user
+    if params[:id].to_i == current_user.id
       @user = User.find(params[:id])
       @events = Event.where('user_id = ?', @user.id)
     else

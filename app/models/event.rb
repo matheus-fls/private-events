@@ -6,4 +6,11 @@ class Event < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
   validates :date, presence: true
+  validate :future_event
+
+  private
+
+    def future_event
+      errors.add(:date, "Can't be in the past!") if date.past?
+    end
 end

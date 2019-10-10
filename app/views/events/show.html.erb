@@ -19,5 +19,5 @@
   </ul>
 </div>
 <div>
-  <%= render 'attendance/create_btn' %>
+  <%= button_to "Join Event", "/attendance?id=#{@event.id}", :method => :post %>
 </div>

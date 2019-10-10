@@ -4,10 +4,15 @@ class AttendanceController < ApplicationController
 
   def create
     @user = current_user
-    @attendance = Attendance.new(user: @user, event_id: params[:id])
-    if @attendance.valid?
+    @event = Event.find(params[:id])
+    @attendance = Attendance.new(user: @user, event: @event)
+    
+    unless Attendance.where(user: @user, event: @event).exists?
       @attendance.save
+      redirect_to @event
+      flash.notice = "Great! You have joined this event"
+    else
+      flash.now.alert = 'You have already joined this event'
     end
-    redirect_to root_path
   end
 end

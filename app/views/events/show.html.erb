@@ -22,6 +22,8 @@
     <% end %>
   </ul>
 </div>
+<% if logged? %>
 <div>
   <%= button_to "Join Event", "/attendance?id=#{@event.id}", :method => :post %>
 </div>
+<% end %>

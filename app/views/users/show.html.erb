@@ -2,7 +2,7 @@
   <div class="container">
     <h4>Your Events</h4>
     <% @events.each do |t| %>
-      <ul><%= t.name %>
+      <ul><%= link_to "#{t.name}", t %>
         <li><%= t.description %></li>
         <li><%= t.date.strftime("%m/%d/%Y") %></li>
       </ul>
@@ -11,14 +11,14 @@
   <h4>Upcoming Events</h4>
   <ul>
     <% @upcoming_events.each do |event| %>
-      <li><%= event.name %>, <%= event.date.strftime("%m/%d/%Y") %></li>
+      <li><%= link_to "#{event.name}", event %>, <%= event.date.strftime("%m/%d/%Y") %></li>
     <% end %>
   </ul>
 
   <h4>Previous Events</h4>
   <ul>
     <% @prev_events.each do |event| %>
-      <li><%= event.name %>, <%= event.date.strftime("%m/%d/%Y") %></li>
+      <li><%= link_to "#{event.name}", event %>, <%= event.date.strftime("%m/%d/%Y") %></li>
     <% end %>
   </ul>
   </div>

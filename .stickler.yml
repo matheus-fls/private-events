@@ -3,4 +3,11 @@ linters:
     fixer: true
 fixers:
   enable: true
-  
+files:
+  ignore:
+    - "bin/*"
+    - "db/*"
+    - "config/*"
+    - "Guardfile"
+    - "Rakefile"
+    

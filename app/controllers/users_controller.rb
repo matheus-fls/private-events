@@ -20,27 +20,11 @@ class UsersController < ApplicationController
       @user = current_user
       @events = Event.where('user_id = ?', @user.id)
       @eves = Attendance.where('user_id = ?', @user.id)
-      @upcoming_events = upcoming_events @eves
-      @prev_events = prev_events @eves
+      @upcoming_events = Event.upcoming_events(@user.id)
+      @prev_events = Event.past_events(@user.id)
     else
       redirect_to '/'
     end
-  end
-
-  def upcoming_events(eves)
-    arr = []
-    eves.each do |eve|
-      arr << eve.event if eve.event.date > Time.now
-    end
-    arr
-  end
-
-  def prev_events(eves)
-    arr = []
-    eves.each do |eve|
-      arr << eve.event if eve.event.date < Time.now
-    end
-    arr
   end
 
   private

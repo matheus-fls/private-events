@@ -1,8 +1,8 @@
+# frozen_string_literal: true
+
 class SessionsController < ApplicationController
-  def new
-    
-  end
-  
+  def new; end
+
   def create
     @user_aux = User.new(params_user)
     @user = User.find_by_email(@user_aux.email)
@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
       render 'new'
     end
   end
-  
+
   def destroy
     if logged?
       log_out
@@ -22,9 +22,9 @@ class SessionsController < ApplicationController
     end
   end
 
-  private 
+  private
 
-    def params_user
-      params.require(:user).permit(:name, :email)
-    end
+  def params_user
+    params.require(:user).permit(:name, :email)
+  end
 end

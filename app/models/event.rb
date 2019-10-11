@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Event < ApplicationRecord
   has_many :attendances
   belongs_to :creator, class_name: 'User', foreign_key: 'user_id'
@@ -10,7 +12,7 @@ class Event < ApplicationRecord
 
   private
 
-    def future_event
-      errors.add(:date, "Can't be in the past!") if date.past?
-    end
+  def future_event
+    errors.add(:date, "Can't be in the past!") if date.past?
+  end
 end

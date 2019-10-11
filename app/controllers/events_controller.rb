@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class EventsController < ApplicationController
   def new
-    @event = current_user.events.build()
+    @event = current_user.events.build
   end
 
-  def create 
+  def create
     @event = current_user.events.build(params_event)
     if @event.valid?
       @event.save
@@ -20,11 +22,11 @@ class EventsController < ApplicationController
     @att = Attendance.where('event_id = ?', @event.id)
   end
 
-  def index 
+  def index
     @events = Event.all
   end
 
-  private 
+  private
 
   def params_event
     params.require(:event).permit(:name, :description, :date)

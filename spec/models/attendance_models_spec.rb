@@ -25,4 +25,11 @@ RSpec.describe Attendance, type: :model do
     expect(subject).to_not be_valid
   end
 
+  it 'is not valid create the same attendees' do
+    attendance = Attendance.create!(user: user, event: event)
+    subject.user = user
+    subject.event = event
+    expect(subject).to_not be_valid
+  end
+
 end

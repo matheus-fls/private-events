@@ -34,5 +34,4 @@ RSpec.describe Attendance, type: :model do
     subject.event = event
     expect(subject).to_not be_valid
   end
-
 end

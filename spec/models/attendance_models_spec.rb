@@ -1,11 +1,14 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Attendance, type: :model do
+  let(:user) { User.create!(name: 'Foobar', email: 'foobar@bar.com') }
 
-  let(:user) { User.create!(name:'Foobar', email:'foobar@bar.com')}
-
-  let(:event) { Event.create!(name: 'Anything',description: 'Anything', 
-                                date: Time.now + 1.month, user_id: user.id) }
+  let(:event) do
+    Event.create!(name: 'Anything', description: 'Anything',
+                  date: Time.now + 1.month, user_id: user.id)
+  end
 
   subject { Attendance.new }
 
@@ -24,5 +27,4 @@ RSpec.describe Attendance, type: :model do
     subject.user = user
     expect(subject).to_not be_valid
   end
-
 end

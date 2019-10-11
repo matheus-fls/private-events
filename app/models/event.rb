@@ -10,6 +10,9 @@ class Event < ApplicationRecord
   validates :date,        presence: true
   validate  :future_event
 
+  scope :upcoming_events, -> { where("date >= ?", Date.today) }
+  scope :past_events    , -> { where("date <  ?", Date.today) }
+
   private
 
   def future_event

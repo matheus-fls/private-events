@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require './app/controllers/users_controller'
 
 RSpec.describe UsersController do
   describe 'Create new user' do

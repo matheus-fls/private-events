@@ -8,11 +8,11 @@ class AttendanceController < ApplicationController
     @event = Event.find(params[:id])
     @attendance = Attendance.new(user: @user, event: @event)
 
-    if Attendance.where(user: @user, event: @event).exists?
-      flash[:alert] = 'You have already joined this event'
-    else
+    if @attendance.valid?
       @attendance.save
       flash[:alert] = 'Great! You have joined this event'
+    else
+      flash[:alert] = 'You have already joined this event'
     end
     redirect_to @event
   end

@@ -20,8 +20,8 @@ class UsersController < ApplicationController
       @user = current_user
       @events = Event.where('user_id = ?', @user.id)
       @eves = Attendance.where('user_id = ?', @user.id)
-      @upcoming_events = Event.upcoming_events(@user.id)
-      @prev_events = Event.past_events(@user.id)
+      @upcoming_events = Attendance.upcoming_events(@user.id)
+      @prev_events = Attendance.past_events(@user.id)
     else
       redirect_to '/'
     end

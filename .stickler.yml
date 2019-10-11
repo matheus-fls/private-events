@@ -8,4 +8,5 @@ files:
     - "config/*"
     - "Guardfile"
     - "Rakefile"
-    
+fixers:
+  enable: true

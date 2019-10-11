@@ -5,10 +5,10 @@ class Event < ApplicationRecord
   belongs_to :creator, class_name: 'User', foreign_key: 'user_id'
   has_many :attendees, class_name: 'User', through: :attendances
 
-  validates :name, presence: true
+  validates :name,        presence: true
   validates :description, presence: true
-  validates :date, presence: true
-  validate :future_event
+  validates :date,        presence: true
+  validate  :future_event
 
   private
 

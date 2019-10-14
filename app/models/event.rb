@@ -16,6 +16,6 @@ class Event < ApplicationRecord
   private
 
   def future_event
-    errors.add(:date, "Can't be in the past!") if date < Date.today
+    errors.add(:date, "Can't be in the past!") if date&.< Date.today
   end
 end

@@ -2,7 +2,7 @@
 
 class Event < ApplicationRecord
   has_many :attendances
-  belongs_to :creator, class_name: 'User', foreign_key: 'user_id'
+  belongs_to :creator, class_name: 'User', foreign_key: 'creator_id'
   has_many :attendees, class_name: 'User', through: :attendances
 
   validates :name, presence: true

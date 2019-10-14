@@ -2,11 +2,14 @@
 
 class EventsController < ApplicationController
   def new
-    @event = current_user.events.build
+    @event = Event.new
+    @event.creator = current_user
   end
 
   def create
-    @event = current_user.events.build(params_event)
+    @event = Event.new(params_event)
+    @event.creator = current_user
+    
     if @event.valid?
       @event.save
       @attendance = Attendance.new(user: current_user, event: @event)

@@ -8,14 +8,14 @@ class Event < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
   validates :date, presence: true
-  validate :future_event
+  validate  :past_event
 
   scope :upcoming_events, lambda { where('events.date >= ?', Date.today) }
   scope :past_events, lambda { where('events.date < ?', Date.today) }
 
   private
 
-  def future_event
+  def past_event
     errors.add(:date, "Can't be in the past!") if date&.< Date.today
   end
 end

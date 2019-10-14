@@ -8,10 +8,10 @@ class Event < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
   validates :date, presence: true
-  validate  :past_event
+  validate :past_event
 
-  scope :upcoming_events, lambda { where('events.date >= ?', Date.today) }
-  scope :past_events, lambda { where('events.date < ?', Date.today) }
+  scope :upcoming_events, -> { where('events.date >= ?', Date.today) }
+  scope :past_events, -> { where('events.date < ?', Date.today) }
 
   private
 

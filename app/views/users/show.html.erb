@@ -1,6 +1,6 @@
 <% if logged? %>
   <div class="container">
-    <h4>Your Events</h4>
+    <h4>Events You Created</h4>
     <% @events.each do |t| %>
       <ul><%= link_to "#{t.name}", t %>
         <li><%= t.description %></li>
@@ -8,14 +8,14 @@
       </ul>
     <% end %>  
 
-  <h4>Upcoming Events</h4>
+  <h4>Your Upcoming Events</h4>
   <ul>
     <% @upcoming_events.each do |att| %>
       <li><%= link_to "#{att.event.name}", att.event %>, <%= att.event.date.strftime("%m/%d/%Y") %></li>
     <% end %>
   </ul>
 
-  <h4>Previous Events</h4>
+  <h4>Your Previous Events</h4>
   <ul>
     <% @prev_events.each do |att| %>
       <li><%= link_to "#{att.event.name}", att.event %>, <%= att.event.date.strftime("%m/%d/%Y") %></li>

@@ -1,0 +1,20 @@
+<% flash.each do |message_type, message| %>
+  <div class="alert alert-<%= message_type %>"><%= message %></div>
+<% end %>
+
+<div class="container">
+  <h4>All Upcoming Events</h4>
+  <ul>
+    <% @upcoming_events.each do |event| %>
+      <li><%= link_to "#{event.name}", event %>, <%= event.date.strftime("%m/%d/%Y") %></li>
+    <% end %>
+  </ul>
+
+  <h4>All Previous Events</h4>
+  <ul>
+    <% @past_events.each do |event| %>
+      <li><%= link_to "#{event.name}", event %>, <%= event.date.strftime("%m/%d/%Y") %></li>
+    <% end %>
+  </ul>
+  </div>
+</div>

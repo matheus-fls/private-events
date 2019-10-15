@@ -1,0 +1,29 @@
+<% flash.each do |message_type, message| %>
+  <div class="alert alert-<%= message_type %>"><%= message %></div>
+<% end %>
+
+<div class="row container">
+  <h2>
+    <%= @event.name %>
+  </h2>
+</div>
+<div class="row">
+</div>
+<div>
+  <%= @event.description %>
+  <%= @event.date %>
+  <%= @event.creator.name %>
+</div>
+<div> 
+  <h3>Attendees</h3>
+  <ul>
+    <% @att.each do |att| %>
+      <li><%= att.user.name %></li>
+    <% end %>
+  </ul>
+</div>
+<% if logged? %>
+<div>
+  <%= button_to "Join Event", "/attendance?id=#{@event.id}", :method => :post %>
+</div>
+<% end %>
